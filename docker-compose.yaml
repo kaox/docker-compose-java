@@ -2,21 +2,19 @@ version: '3'
 services:
   nginx:
    container_name: some-nginx
-   image: nginx:1.13
+   image: nginx:1.15.3
    restart: always
    ports:
    - 80:80
-   - 443:443
    volumes:
    - ./nginx/conf.d:/etc/nginx/conf.d
 
   mysql:
    container_name: some-mysql
-   image: mysql/mysql-server:5.7
+   image: mysql/mysql-server:8.0.12
    environment:
     MYSQL_DATABASE: test
     MYSQL_ROOT_PASSWORD: hellokoding
-    MYSQL_ROOT_HOST: '%'
    ports:
    - "3306:3306"
    restart: always
@@ -24,7 +22,7 @@ services:
   app:
     restart: always
     build: ./app
-    working_dir: /app
+    scale: 3
     volumes:
       - ./app:/app
     expose:
