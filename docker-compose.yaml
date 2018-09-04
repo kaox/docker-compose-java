@@ -22,7 +22,7 @@ services:
   app:
     restart: always
     build: ./app
-    scale: 3
+    replicas: 3
     volumes:
       - ./app:/app
     expose:
