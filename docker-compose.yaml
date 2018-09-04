@@ -8,16 +8,6 @@ services:
    - 80:80
    volumes:
    - ./nginx/conf.d:/etc/nginx/conf.d
-
-  mysql:
-   container_name: mysql
-   image: mysql/mysql-server:8.0.12
-   environment:
-    MYSQL_DATABASE: petclinic
-    MYSQL_ROOT_PASSWORD: petclinic
-   ports:
-   - "3306:3306"
-   restart: always
   
   app:
     restart: always
@@ -28,10 +18,3 @@ services:
       - "8080"
     depends_on:
       - nginx
-      - mysql
-
-  sonar:
-    build: ./sonar
-    command: git clone https://github.com/kaox/spring-petclinic.git && cd spring-petclinic && sonar-scanner
-    ports:
-      - 9000:9000
