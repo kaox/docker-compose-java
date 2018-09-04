@@ -32,6 +32,6 @@ services:
 
   sonar:
     build: ./sonar
-    command: git clone https://github.com/kaox/spring-petclinic.git; cd spring-petclinic; sonar-scanner
+    command: git clone https://github.com/kaox/spring-petclinic.git && cd spring-petclinic && sonar-scanner
     ports:
       - 9000:9000
